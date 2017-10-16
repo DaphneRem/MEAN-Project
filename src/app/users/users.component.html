@@ -14,7 +14,14 @@
                         <label for="Age">Age</label>
 
                         <label for="Location">Location</label>
-
+<div>
+    <label for="editUser">Edit User:</label>
+    <input type="text" placeholder="Name" [(ngModel)]="this.editUser.name" [ngModelOptions]="{standalone: true}"/>
+    <input type="text" placeholder="Blog" [(ngModel)]="this.editUser.blog" [ngModelOptions]="{standalone: true}"/>
+    <input type="text" placeholder="Age" [(ngModel)]="this.editUser.age" [ngModelOptions]="{standalone: true}"/>
+    <input type="text" placeholder="Location" [(ngModel)]="this.editUser.location" [ngModelOptions]="{standalone: true}"/>
+    <button (click)="updateUser()"> Edit User </button>
+</div>
 
             <div *ngFor="let user of users" (click)="setEditUser(user)">
                 <div>
@@ -33,5 +40,3 @@
                     <button (click)="deleteUser(user)">Delete</button>
                 </div>
             </div>
-        <div>
-</div>

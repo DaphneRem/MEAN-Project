@@ -11,6 +11,7 @@ export class UsersComponent implements OnInit {
 
     users: User[];
     newUser: User;
+    editUser: User;
     searchCriteria: string;
 
 
@@ -20,6 +21,7 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
     this.newUser = User.CreateDefault();
+    this.editUser = User.CreateDefault();
     this.searchCriteria = '';
     this.getUsers();
 
@@ -55,6 +57,20 @@ export class UsersComponent implements OnInit {
     )
   }
 
+  updateUser(user:User) {
+      this.userService
+      .updateUser(this.newUser)
+      .subscribe(
+          data => {
+            //   var index = this.users.findIndex(item => item._id === user._id);
+             var index = this.users.findIndex(item => item._id === this.editUser._id);
+              this.users[index] = this.editUser;
+              this.editUser = User.CreateDefault();
+              console.log("Added user.");
+              console.log(this.editUser)
+    })
+  }
+
   deleteUser(user:User) {
       this.userService.deleteUser(user)
       .subscribe(
@@ -63,5 +79,9 @@ export class UsersComponent implements OnInit {
               console.log("User deleted!");
       })
   }
-  
+
+  setEditUser(user: User){
+      this.editUser = new User(user._id, user.name, user.age, user.location, user.blog);
+  }
+
 }
