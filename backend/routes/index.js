@@ -5,17 +5,12 @@ var mongoose = require('mongoose');
 var router = express.Router();
 
 router.get('/getUsers', function(req, res, next) {
-  var searchQuery = {};
 
-  if(req.query.name)
-    searchQuery = { name: req.query.name };
-
-  User.find(searchQuery, function(err, users){
+  User.find(function(err, users){
     if (err) {
       res.status(400);
       res.send();
     }
-
     console.log("returning all the users.");
     res.send(users);
   })
