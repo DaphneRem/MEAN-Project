@@ -34,5 +34,16 @@ export class UserService {
                    return Observable.throw(error.json ? error.json().error : error || 'Server error')
                });
    }
-   
+
+   deleteUser(user:User): Observable<any>{
+       return this.http.post("http://localhost:3000/deleteUser", { id: user._id })
+       .map((res:any) => {
+           return res.json();
+        })
+        .catch((error:any) => {
+            return Observable.throw(error.json ? error.json().error : error || 'Server error')
+        });
+    }
+    
+
 }

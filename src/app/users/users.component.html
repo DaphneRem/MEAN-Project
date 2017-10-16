@@ -1,42 +1,36 @@
-<div class="form-group col-sm-2">
+<div>
     <label for="insertUser">Insert User:</label>
-    <input class="form-control" type="text" placeholder="Name" [(ngModel)]="this.newUser.name" [ngModelOptions]="{standalone: true}"/>
-    <input class="form-control" type="text" placeholder="Blog" [(ngModel)]="this.newUser.blog" [ngModelOptions]="{standalone: true}"/>
-    <input class="form-control" type="text" placeholder="Age" [(ngModel)]="this.newUser.age" [ngModelOptions]="{standalone: true}"/>
-    <input class="form-control" type="text" placeholder="Location" [(ngModel)]="this.newUser.location" [ngModelOptions]="{standalone: true}"/>
-    <button class="btn btn-default" (click)="insertNewUser()"> Insert User </button>
+    <input type="text" placeholder="Name" [(ngModel)]="this.newUser.name" [ngModelOptions]="{standalone: true}"/>
+    <input type="text" placeholder="Blog" [(ngModel)]="this.newUser.blog" [ngModelOptions]="{standalone: true}"/>
+    <input type="text" placeholder="Age" [(ngModel)]="this.newUser.age" [ngModelOptions]="{standalone: true}"/>
+    <input type="text" placeholder="Location" [(ngModel)]="this.newUser.location" [ngModelOptions]="{standalone: true}"/>
+    <button (click)="insertUser()"> Insert User </button>
+</div>
 
-
-    <div class="col-sm-8">
-            <div class="row">
-                    <div class="col-sm-2">
                         <label for="Name">Name</label>
-                    </div>
-                    <div class="col-sm-2">
+
                         <label for="Blog">Blog</label>
-                    </div>
-                    <div class="col-sm-2">
+
                         <label for="Age">Age</label>
-                    </div>
-                    <div class="col-sm-2">
+
                         <label for="Location">Location</label>
-                    </div>
-            </div>
-            <div class="row" *ngFor="let user of users" (click)="setEditUser(user)">
-                <div class="col-sm-2">
+
+
+            <div *ngFor="let user of users" (click)="setEditUser(user)">
+                <div>
                     {{user.name}}
                 </div>
-                <div class="col-sm-2">
+                <div>
                     {{user.blog}}
                 </div>
-                <div class="col-sm-2">
+                <div>
                     {{user.age}}
                 </div>
-                <div class="col-sm-2">
+                <div>
                     {{user.location}}
                 </div>
-                <div class="col-sm-2">
-                    <button class="btn btn-default" (click)="deleteUser(user)">Delete</button>
+                <div>
+                    <button (click)="deleteUser(user)">Delete</button>
                 </div>
             </div>
         <div>

@@ -50,9 +50,18 @@ export class UsersComponent implements OnInit {
          this.newUser._id = data.id;
          this.users.push(this.newUser);
          this.newUser = User.CreateDefault();
-
          console.log("Added user.");
       }
     )
   }
+
+  deleteUser(user:User) {
+      this.userService.deleteUser(user)
+      .subscribe(
+          data => {
+              this.users.splice(this.users.indexOf(user), 1);
+              console.log("User deleted!");
+      })
+  }
+  
 }
