@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../model/user';
 import { UserService } from '../services/users.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'users',
   templateUrl: './users.component.html',
-  providers : [ UserService ]
+  providers : [
+      UserService
+   ]
 })
 export class UsersComponent implements OnInit {
 
@@ -14,10 +17,12 @@ export class UsersComponent implements OnInit {
     editUser: User;
     searchMode = false;
     searchResult: any[] = [];
+    selectedUser: User;
 
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -25,6 +30,10 @@ export class UsersComponent implements OnInit {
     this.editUser = User.CreateDefault();
     this.getUsers();
 
+  }
+
+  gotoDetail(user): void {
+      this.router.navigate(['/users', user._id]);
   }
 
 
