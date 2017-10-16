@@ -12,7 +12,17 @@ export class UserService {
     constructor(private http: Http) {
     }
 
-    getUsers(searchCriteria:any) : Observable<User[]>{
+    getUsers() : Observable<User[]> {
+            return this.http.get("http://localhost:3000/getUsers")
+            .map((res:any) => {
+                return res.json();
+            })
+            .catch((error:any) => {
+                return Observable.throw(error.json ? error.json().error : error || 'Server error')
+            });
+    }
+
+    getUser(searchCriteria:any) : Observable<User[]>{
        let params: URLSearchParams = new URLSearchParams();
        params.set('name', searchCriteria);
        return this.http.get("http://localhost:3000/getUsers", { search: params })

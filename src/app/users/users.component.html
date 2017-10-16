@@ -1,42 +1,62 @@
 <div>
-    <label for="insertUser">Insert User:</label>
-    <input type="text" placeholder="Name" [(ngModel)]="this.newUser.name" [ngModelOptions]="{standalone: true}"/>
-    <input type="text" placeholder="Blog" [(ngModel)]="this.newUser.blog" [ngModelOptions]="{standalone: true}"/>
-    <input type="text" placeholder="Age" [(ngModel)]="this.newUser.age" [ngModelOptions]="{standalone: true}"/>
-    <input type="text" placeholder="Location" [(ngModel)]="this.newUser.location" [ngModelOptions]="{standalone: true}"/>
-    <button (click)="insertUser()"> Insert User </button>
-</div>
-
-                        <label for="Name">Name</label>
-
-                        <label for="Blog">Blog</label>
-
-                        <label for="Age">Age</label>
-
-                        <label for="Location">Location</label>
-<div>
-    <label for="editUser">Edit User:</label>
-    <input type="text" placeholder="Name" [(ngModel)]="this.editUser.name" [ngModelOptions]="{standalone: true}"/>
-    <input type="text" placeholder="Blog" [(ngModel)]="this.editUser.blog" [ngModelOptions]="{standalone: true}"/>
-    <input type="text" placeholder="Age" [(ngModel)]="this.editUser.age" [ngModelOptions]="{standalone: true}"/>
-    <input type="text" placeholder="Location" [(ngModel)]="this.editUser.location" [ngModelOptions]="{standalone: true}"/>
-    <button (click)="updateUser()"> Edit User </button>
-</div>
-
-            <div *ngFor="let user of users" (click)="setEditUser(user)">
-                <div>
-                    {{user.name}}
-                </div>
-                <div>
-                    {{user.blog}}
-                </div>
-                <div>
-                    {{user.age}}
-                </div>
-                <div>
-                    {{user.location}}
-                </div>
-                <div>
-                    <button (click)="deleteUser(user)">Delete</button>
-                </div>
+    <div>
+        <label for="searchByName">Search by name:</label>
+        <input type="text" placeholder="Name" (keyup)="search($event.target.value)" [(ngModel)]="searchCriteria" [ngModelOptions]="{standalone: true}"/>
+    </div>
+    <div  *ngIf="!this.searchMode">
+        <div *ngFor="let user of users" (click)="setEditUser(user)">
+            <div>
+                {{user.name}}
             </div>
+            <div>
+                {{user.blog}}
+            </div>
+            <div>
+                {{user.age}}
+            </div>
+            <div>
+                {{user.location}}
+            </div>
+            <div>
+                <button (click)="deleteUser(user)">Delete</button>
+            </div>
+        </div>
+    </div>
+    <div  *ngIf="this.searchMode" >
+        <div *ngFor="let result of searchResult" (click)="setEditUser(result)">
+            <div>
+                {{result.name}}
+            </div>
+            <div>
+                {{result.blog}}
+            </div>
+            <div>
+                {{result.age}}
+            </div>
+                <div>
+                {{result.location}}
+            </div>
+            <div>
+                <button (click)="deleteUser(result)">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <label for="editUser">Edit User:</label>
+        <input type="text" placeholder="Name" [(ngModel)]="this.editUser.name" [ngModelOptions]="{standalone: true}"/>
+        <input type="text" placeholder="Blog" [(ngModel)]="this.editUser.blog" [ngModelOptions]="{standalone: true}"/>
+        <input type="text" placeholder="Age" [(ngModel)]="this.editUser.age" [ngModelOptions]="{standalone: true}"/>
+        <input type="text" placeholder="Location" [(ngModel)]="this.editUser.location" [ngModelOptions]="{standalone: true}"/>
+        <button (click)="updateUser()"> Edit User </button>
+    </div>
+
+    <div>
+        <label for="insertUser">Insert User:</label>
+        <input type="text" placeholder="Name" [(ngModel)]="this.newUser.name" [ngModelOptions]="{standalone: true}"/>
+        <input type="text" placeholder="Blog" [(ngModel)]="this.newUser.blog" [ngModelOptions]="{standalone: true}"/>
+        <input type="text" placeholder="Age" [(ngModel)]="this.newUser.age" [ngModelOptions]="{standalone: true}"/>
+        <input type="text" placeholder="Location" [(ngModel)]="this.newUser.location" [ngModelOptions]="{standalone: true}"/>
+        <button (click)="insertUser()"> Insert User </button>
+    </div>
+</div>

@@ -12,7 +12,8 @@ export class UsersComponent implements OnInit {
     users: User[];
     newUser: User;
     editUser: User;
-    searchCriteria: string;
+    searchMode = false;
+    searchResult: any[] = [];
 
 
   constructor(
@@ -22,13 +23,24 @@ export class UsersComponent implements OnInit {
   ngOnInit() {
     this.newUser = User.CreateDefault();
     this.editUser = User.CreateDefault();
-    this.searchCriteria = '';
     this.getUsers();
 
   }
 
+
+  search(world) {
+      if (world.length){
+          this.searchMode = true;
+          this.users.map((item) => {if(item.name.includes(world) && (this.searchResult.includes(item)==false)){ return this.searchResult.push(item) }})
+     } else {
+         this.searchMode = false;
+         this.searchResult = []
+     }
+  }
+
+
   getUsers(){
-    this.userService.getUsers(this.searchCriteria)
+    this.userService.getUsers()
     .subscribe(
       data => {
          this.users = [];
@@ -62,12 +74,10 @@ export class UsersComponent implements OnInit {
       .updateUser(this.newUser)
       .subscribe(
           data => {
-            //   var index = this.users.findIndex(item => item._id === user._id);
              var index = this.users.findIndex(item => item._id === this.editUser._id);
               this.users[index] = this.editUser;
               this.editUser = User.CreateDefault();
               console.log("Added user.");
-              console.log(this.editUser)
     })
   }
 
