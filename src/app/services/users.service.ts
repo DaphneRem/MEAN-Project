@@ -27,30 +27,6 @@ export class UserService {
         .map(users => users.find(user => user._id === id));
     }
 
-    // getUser(id:any) : Observable<User>{
-    //    let params: URLSearchParams = new URLSearchParams();
-    //    params.set('_id', id);
-    //    return this.http.get("http://localhost:3000/getUsers", { search: params })
-    //            .map((res:any) => {
-    //                return res.json();
-    //            })
-    //            .catch((error:any) => {
-    //                return Observable.throw(error.json ? error.json().error : error || 'Server error')
-    //            });
-    // }
-
-    // getUser(searchCriteria:any) : Observable<User[]>{
-    //    let params: URLSearchParams = new URLSearchParams();
-    //    params.set('name', searchCriteria);
-    //    return this.http.get("http://localhost:3000/getUsers", { search: params })
-    //            .map((res:any) => {
-    //                return res.json();
-    //            })
-    //            .catch((error:any) => {
-    //                return Observable.throw(error.json ? error.json().error : error || 'Server error')
-    //            });
-    // }
-
     insertNewUser(user:User): Observable<any>{
         return this.http.post("http://localhost:3000/insertUser", user)
             .map((res:any) => {

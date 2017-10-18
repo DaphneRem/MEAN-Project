@@ -59,7 +59,9 @@ export class UsersComponent implements OnInit {
                                 element.name,
                                 element.age,
                                 element.location,
-                                element.blog);
+                                element.blog,
+                                element.postDate,
+                                element.editDate);
              this.users.push(newUser);
            })
       })
@@ -100,7 +102,8 @@ export class UsersComponent implements OnInit {
   }
 
   setEditUser(user: User){
-      this.editUser = new User(user._id, user.name, user.age, user.location, user.blog);
+      let date = new Date();
+      this.editUser = new User(user._id, user.name, user.age, user.location, user.blog, user.postDate, date);
   }
 
 }

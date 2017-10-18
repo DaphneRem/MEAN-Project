@@ -6,7 +6,9 @@ var userSchema = new Schema({
   name: String,
   blog: String,
   age: Number,
-  location: String
+  location: String,
+  postDate : { type: Date },
+  editDate : { type: Date, default : null}
 });
 
 // Define a method for concatanation of name and blog fields.

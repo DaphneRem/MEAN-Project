@@ -4,7 +4,7 @@
         <input type="text" placeholder="Name" (keyup)="search($event.target.value)" [(ngModel)]="searchCriteria" [ngModelOptions]="{standalone: true}"/>
     </div>
     <div  *ngIf="!this.searchMode">
-        <div *ngFor="let user of users" (click)="setEditUser(user)">
+        <div *ngFor="let user of users">
             <div>
                 {{user.name}}
             </div>
@@ -18,6 +18,14 @@
                 {{user.location}}
             </div>
             <div>
+                {{user.postDate}}
+            </div>
+            <div>
+                {{user.editDate}}
+            </div>
+
+            <div>
+                <button (click)="setEditUser(user)">Edit User</button>
                 <button (click)="deleteUser(user)">Delete</button>
                 <button (click)="gotoDetail(user)">Detail view</button>
 
@@ -35,8 +43,14 @@
             <div>
                 {{result.age}}
             </div>
-                <div>
+            <div>
                 {{result.location}}
+            </div>
+            <div>
+                {{result.postDate}}
+            </div>
+            <div>
+                {{result.editDate}}
             </div>
             <div>
                 <button (click)="deleteUser(result)">Delete</button>
@@ -50,6 +64,7 @@
         <input type="text" placeholder="Blog" [(ngModel)]="this.editUser.blog" [ngModelOptions]="{standalone: true}"/>
         <input type="text" placeholder="Age" [(ngModel)]="this.editUser.age" [ngModelOptions]="{standalone: true}"/>
         <input type="text" placeholder="Location" [(ngModel)]="this.editUser.location" [ngModelOptions]="{standalone: true}"/>
+
         <button (click)="updateUser()"> Edit User </button>
     </div>
 
@@ -59,6 +74,7 @@
         <input type="text" placeholder="Blog" [(ngModel)]="this.newUser.blog" [ngModelOptions]="{standalone: true}"/>
         <input type="text" placeholder="Age" [(ngModel)]="this.newUser.age" [ngModelOptions]="{standalone: true}"/>
         <input type="text" placeholder="Location" [(ngModel)]="this.newUser.location" [ngModelOptions]="{standalone: true}"/>
+
         <button (click)="insertUser()"> Insert User </button>
     </div>
 </div>
