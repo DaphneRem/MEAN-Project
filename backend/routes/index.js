@@ -1,26 +1,26 @@
 var express = require('express');
-var User = require('../model/user');
+var Article = require('../model/article');
 var mongoose = require('mongoose');
 
 var router = express.Router();
 
-router.get('/getUsers', function(req, res, next) {
+router.get('/getArticles', function(req, res, next) {
 
-  User.find(function(err, users){
+  Article.find(function(err, articles){
     if (err) {
       res.status(400);
       res.send();
     }
-    console.log("returning all the users.");
-    res.send(users);
+    console.log("returning all the articles.");
+    res.send(articles);
   })
 });
 
-router.post('/insertUser', function(req, res, next) {
-  var newUser = new User(req.body);
-  newUser._id = mongoose.Types.ObjectId();
+router.post('/addArticle', function(req, res, next) {
+  var newArticle = new Article(req.body);
+  newArticle._id = mongoose.Types.ObjectId();
 
-  newUser.save(function(err) {
+  newArticle.save(function(err) {
     if (err) {
       console.log("not saved!");
       res.status(400);
@@ -28,12 +28,12 @@ router.post('/insertUser', function(req, res, next) {
     }
 
     console.log("saved!");
-    res.send({ id : newUser._id });
+    res.send({ id : newArticle._id });
   });
 });
 
-router.post('/deleteUser', function(req, res, next) {
-  User.remove({_id : req.body.id}, function(err) {
+router.post('/deleteArticle', function(req, res, next) {
+  Article.remove({_id : req.body.id}, function(err) {
     if (err) {
       console.log("not removed!");
       res.status(400);
@@ -45,10 +45,10 @@ router.post('/deleteUser', function(req, res, next) {
   });
 });
 
-router.post('/updateUser', function(req, res, next) {
-  var user = new User(req.body);
+router.post('/updateArticle', function(req, res, next) {
+  var article = new Article(req.body);
 
-  User.update({_id : user.id}, user, function(err) {
+  Article.update({_id : article.id}, article, function(err) {
     if (err) {
       console.log("not updated!");
       res.status(400);
