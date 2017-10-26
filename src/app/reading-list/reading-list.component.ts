@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { ADD_TO_LIST, DELETE_FROM_LIST, RESET, LENGTH } from '../store/reading-list.reducer';
+import {TranslateService} from '@ngx-translate/core';
 
 interface AppState {
   readingList: any[];
@@ -17,7 +18,10 @@ export class ReadingListComponent implements OnInit {
 
     readingList: Observable<any>;
 
-  constructor(private store: Store<AppState>) {
+  constructor(
+      private store: Store<AppState>,
+      private translate: TranslateService
+  ) {
       this.readingList = store.select('readingList');
   }
 
@@ -35,8 +39,8 @@ export class ReadingListComponent implements OnInit {
       this.store.dispatch({ type: RESET });
   }
 
-  findLength() {
-
-  }
+  changeLanguage(lang){
+        this.translate.use(lang); // fonction pour changer de langue
+    }
 
 }

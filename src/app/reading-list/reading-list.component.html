@@ -1,6 +1,9 @@
-<h1>MY READING LIST : </h1>
+<h1>{{ 'home.readingList' | translate }}</h1>
+<button (click)="changeLanguage('fr')">{{ 'home.languages.french' | translate }}</button>
+<button (click)="changeLanguage('en')">{{ 'home.languages.english' | translate }}</button>
+
 <div *ngFor="let article of readingList | async ">
     <p>{{article.title}}</p>
-    <button (click)="removeArticle(article)">Suppr Article</button>
+    <button (click)="removeArticle(article)">{{ 'home.delete' | translate }}</button>
 </div>
-<button (click)="reset()">RESET</button>
+<button (click)="reset()">{{ 'home.deleteAll' | translate }}</button>
