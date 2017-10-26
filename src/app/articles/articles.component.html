@@ -1,0 +1,79 @@
+<div>
+    <div>
+        <label for="searchByName">Search by name:</label>
+        <input type="text" placeholder="Name" (keyup)="search($event.target.value)" [(ngModel)]="searchCriteria" [ngModelOptions]="{standalone: true}"/>
+    </div>
+    <div  *ngIf="!this.searchMode">
+        <div *ngFor="let article of articles">
+            <div>
+                {{article.title}}
+            </div>
+            <div>
+                {{article.subTitle}}
+            </div>
+            <div>
+                {{article.body}}
+            </div>
+            <div>
+                {{article.author}}
+            </div>
+            <div>
+                {{article.links}}
+            </div>
+            <div>
+                {{article.postDate | date:'d MMM y' | uppercase}}
+            </div>
+            <div>
+                {{article.editDate | date:'d MMM y' | uppercase}}
+            </div>
+
+            <div>
+                <button (click)="addToList(article)">A lire plus tard</button>
+                <button (click)="setEditArticle(article)">Edit Article</button>
+                <button (click)="deleteArticle(article)">Delete</button>
+                <button (click)="gotoDetail(article)">Detail view</button>
+            </div>
+        </div>
+    </div>
+    <div  *ngIf="this.searchMode" >
+        <div *ngFor="let result of searchResult" (click)="setEditArticle(result)">
+            <div>
+                {{result.title}}
+            </div>
+            <div>
+                {{result.subTitle}}
+            </div>
+            <div>
+                {{result.body}}
+            </div>
+            <div>
+                {{result.author}}
+            </div>
+            <div>
+                {{result.links}}
+            </div>
+            <div>
+                {{result.postDate | date:'d MMM y' | uppercase}}
+            </div>
+            <div>
+                {{result.editDate | date:'d MMM y' | uppercase}}
+            </div>
+            <div>
+                <button (click)="deleteArticle(result)">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <edit-article [editArticle]="editArticle" [articles]="articles" ></edit-article>
+
+    <div>
+        <label for="insertArticle">Insert Article:</label>
+        <input type="text" placeholder="Title" [(ngModel)]="this.newArticle.title" [ngModelOptions]="{standalone: true}"/>
+        <input type="text" placeholder="subTitle" [(ngModel)]="this.newArticle.subTitle" [ngModelOptions]="{standalone: true}"/>
+        <input type="text" placeholder="Body" [(ngModel)]="this.newArticle.body" [ngModelOptions]="{standalone: true}"/>
+        <input type="text" placeholder="Author" [(ngModel)]="this.newArticle.author" [ngModelOptions]="{standalone: true}"/>
+        <input type="text" placeholder="Links" [(ngModel)]="this.newArticle.links" [ngModelOptions]="{standalone: true}"/>
+
+        <button (click)="insertArticle(newArticle)"> Insert Article </button>
+    </div>
+</div>

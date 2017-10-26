@@ -1,8 +1,6 @@
-<ul>
-  My Reading List :
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-</ul>
+<h1>MY READING LIST : </h1>
+<div *ngFor="let article of readingList | async ">
+    <p>{{article.title}}</p>
+    <button (click)="removeArticle(article)">Suppr Article</button>
+</div>
+<button (click)="reset()">RESET</button>
