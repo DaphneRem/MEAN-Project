@@ -7,6 +7,7 @@ var articleSchema = new Schema({
   body: String,
   author: String,
   links: String,
+  urlImage : String,
   postDate : { type: Date },
   editDate : { type: Date }
 });

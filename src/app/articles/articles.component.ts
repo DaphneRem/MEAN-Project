@@ -127,7 +127,7 @@ export class ArticlesComponent implements OnInit {
 
   setEditArticle(article: Article){
       let date = new Date();
-      this.editArticle = new Article(article._id, article.title, article.subTitle, article.body, article.author, article.links, article.postDate, date);
+      this.editArticle = new Article(article._id, article.title, article.subTitle, article.body, article.author, article.links, article.urlImage, article.postDate, date);
   }
 
 }
