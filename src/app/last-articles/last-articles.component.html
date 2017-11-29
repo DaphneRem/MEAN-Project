@@ -1,0 +1,30 @@
+<div class="article-row row">
+    <div *ngFor="let article of lastArticles">
+        <a [routerLink]="['/articles/', article._id]">
+        <!-- <div class="col-md-4 col-sm-12 col-xs-12 article"> -->
+
+        <!-- <div class="col-md-4 col-sm-12 col-xs-12 article" style="
+                    background-image:url('https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=1567&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D');
+                    background-size:cover;
+                    background-repeat:no-repeat;
+                    background-position:center"> -->
+                    <div class="col-md-4 col-sm-12 col-xs-12 article"
+                        [style.backgroundImage]="'url('+ article.urlImage +')'"
+                        [style.backgroundSize]="'cover'"
+                        >
+
+            <div class="article-head text-center">
+                <div class="article-titles text-uppercase">
+                    <h3>{{article.title}}</h3>
+                    <p></p>
+                    <h4>{{article.subTitle}}</h4>
+                </div>
+                <div class="triangle"></div>
+            </div>
+            <div class="article-image" >
+                <!-- <img src="{{article.urlImage}}" alt=""> -->
+            </div>
+        </div>
+    </a>
+    </div>
+</div>

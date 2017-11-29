@@ -1,0 +1,87 @@
+.article-row {
+    width: 100%;
+    margin : 0;
+}
+
+.articles {
+    height : 400px;
+    cursor : pointer;
+}
+
+.article, .article-head {
+    padding : 0;
+}
+
+.article-head {
+    z-index: 2;
+}
+
+.article-titles {
+    color : #1b1b1b;
+    border : 0px rgb(102, 102, 102) solid;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 2px 0px;
+    height : 130px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.5s ease;
+
+}
+
+.article-titles:hover {
+    color :  #ffffff;
+    background-color: #2b2b2b;
+    transition: background-color 0.5s ease;
+
+}
+
+h3 {
+    margin : 0;
+    font-size : 1.1em;
+}
+
+p {
+    width: 100px;
+    height: 0;
+    border-bottom : 1px solid #cecece;
+    margin : 15px;
+}
+
+h4 {
+    color : #969696;
+    margin : 0;
+    font-size : 1em;
+    font-weight: lighter;
+
+}
+
+.triangle {
+    margin : auto;
+    height: 0;
+    width: 0;
+    border-style: solid;
+    border-width: 15px 15px 0 15px;
+    border-color: #FFFFFF transparent transparent transparent;
+    line-height: 0px;
+    _border-color: #2b2b2b #000000 #000000 #000000;
+    _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');
+    transition: border-color 0.5s ease;
+}
+
+.article-head:hover .triangle {
+    transition: border-color 0.5s ease;
+    border-color: #2b2b2b transparent transparent transparent;
+
+}
+
+.article-image {
+    height : 300px;
+    
+}
+
+img {
+    height: 100%;
+    width: 100%;
+}
