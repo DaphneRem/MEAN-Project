@@ -1,0 +1,24 @@
+<div class="thumbnail result">
+
+    <div class="image"
+        [style.backgroundImage]="'url('+article.urlImage+')'"
+        [style.backgroundSize]="'cover'">
+        <!-- <div *ngFor="let fav of readingList| async"> -->
+            <div *ngIf="(readingList| async).indexOf(article) <= 0 " (click)="addToFavorites(article)">
+                <i class="fa fa-star-o" aria-hidden="true"></i>
+            </div>
+            <div *ngIf="(readingList| async).indexOf(article) > 0">
+                <i class="fa fa-star" aria-hidden="true"></i>
+            </div>
+        <!-- </div> -->
+        <h3 class="text-uppercase">{{article.title}}</h3>
+
+    </div>
+    <!-- <img src="{{article.urlImage}}" alt="..."> -->
+    <div class="caption">
+      <p>{{article.subTitle}}</p>
+      <p>By {{article.author}}</p>
+      <p>{{article.postDate | date:'d MMM y' | uppercase}}</p>
+      <p><a href="#" class="btn btn-primary star" role="button">{{ 'home.read' | translate }}</a> </p>
+    </div>
+</div>
