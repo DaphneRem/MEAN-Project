@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { ADD_TO_LIST, DELETE_FROM_LIST, RESET, LENGTH } from '../store/reading-list.reducer';
@@ -17,6 +17,7 @@ interface AppState {
 export class ReadingListComponent implements OnInit {
 
     readingList: Observable<any>;
+    @Input() showReadingList: boolean;
 
   constructor(
       private store: Store<AppState>,

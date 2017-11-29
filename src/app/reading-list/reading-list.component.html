@@ -1,9 +1,19 @@
-<h1>{{ 'home.readingList' | translate }}</h1>
-<button (click)="changeLanguage('fr')">{{ 'home.languages.french' | translate }}</button>
-<button (click)="changeLanguage('en')">{{ 'home.languages.english' | translate }}</button>
+<div *ngIf="showReadingList" class="reading-list">
+    <div *ngFor="let article of readingList | async " class="favorite-article">
+        <div class="left">
+            <img src="https://images.unsplash.com/photo-1491472253230-a044054ca35f?auto=format&fit=crop&w=800&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" alt="">
+            <div class="favorite-title">
+                <p>{{article.title}}</p>
+                <p>By {{article.author}}</p>
+                <p><a [routerLink]="['/articles/', article._id]">Lire</a></p>
+            </div>
+        </div>
+        <div class="favorite-delete text-center" (click)="removeArticle(article)">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
 
-<div *ngFor="let article of readingList | async ">
-    <p>{{article.title}}</p>
-    <button (click)="removeArticle(article)">{{ 'home.delete' | translate }}</button>
+        <!-- <button (click)="removeArticle(article)">{{ 'home.delete' | translate }}</button> -->
+    </div>
+    <button (click)="reset()">{{ 'home.deleteAll' | translate }}</button>
+
 </div>
-<button (click)="reset()">{{ 'home.deleteAll' | translate }}</button>
