@@ -1,0 +1,11 @@
+<div class="row research text-uppercase form-inline" [ngClass]="!this.searchMode ? 'search' : 'searching'">
+    <label for="searchByName">{{ 'home.search' | translate }} :</label>
+    <input type="text" placeholder="{{ 'home.searchByTitle' | translate }}" (keyup)="search($event.target.value)" [(ngModel)]="searchCriteria" [ngModelOptions]="{standalone: true}"/>
+</div>
+<div class="row all-result">
+    <div *ngIf="this.searchMode" >
+        <div class="col-sm-6 col-md-4" *ngFor="let article of searchResult">
+            <thumbnail [article]="article"></thumbnail>
+        </div>
+    </div>
+</div>
