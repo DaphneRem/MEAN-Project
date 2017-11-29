@@ -1,0 +1,21 @@
+.about {
+    height : 370px;
+    margin : 45px 0;
+}
+
+.about div {
+    background-color: #FFFFFF;
+    height: 100%;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+.about-left img {
+    height: 90%;
+}
+
+.about-me {
+    font-size: 1.1em;
+    padding : 20px;
+}
