@@ -1,0 +1,10 @@
+/deep/ body {
+  margin : 0;
+  font-size : 16px;
+}
+
+/****** COLORS ******/
+
+/deep/ .white {
+    color : #ffffff;
+}
