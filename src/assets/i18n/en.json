@@ -1,6 +1,20 @@
 {
   "home": {
+    "read" : "Read",
+    "favorites" : "My Favorites",
+    "navbar" : {
+        "accueil" : "Home",
+        "about" : "About Me"
+    },
+    "languages" : {
+        "english" : "English",
+        "french" : "French"
+    },
     "search": "Search Article",
-    "select": "Change language"
+    "searchByTitle" : "Title",
+    "select": "Change language",
+    "readingList" : "My reading list",
+    "delete" : "Delete",
+    "deleteAll" : "Delete All"
   }
 }

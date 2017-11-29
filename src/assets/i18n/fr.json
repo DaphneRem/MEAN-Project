@@ -1,6 +1,21 @@
 {
   "home": {
+    "read" : "Lire",
+    "favorites" : "Mes Favoris",
+    "navbar" : {
+         "accueil" : "Accueil",
+         "about" : "A Propos"
+      },
+    "languages" : {
+        "english" : "Anglais",
+        "french" : "Français"
+    },
     "search": "Rechercher un Article",
-    "select": "Changer la langue"
+    "searchByTitle" : "Titre",
+    "select": "Changer la langue",
+    "readingList" : "Ma liste de lecture",
+    "delete" : "Supprimer",
+    "deleteAll" : "Tous Supprimer"
+
   }
 }
