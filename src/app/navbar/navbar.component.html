@@ -1,0 +1,46 @@
+<div (window:resize)="onResize($event)"></div>
+<div *ngIf="width<992" class="media-menu">
+    <i class="fa fa-bars" aria-hidden="true" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"></i>
+</div>
+<div *ngIf="width<992" class="collapse" id="collapseExample">
+  <div class="well">
+    coucou
+  </div>
+</div>
+<div class="navbar row">
+    <div class="menu white col-md-2 col-xs-4">
+        <div class="navbar-flags">
+            <span (click)="changeLanguage('fr')" class="flag flag-icon flag-icon-fr"></span>
+            <span (click)="changeLanguage('en')" class="flag flag-icon flag-icon-gb"></span>
+        </div>
+    </div>
+    <div *ngIf="width>991" class="menu white col-md-6">
+        <div class="navbar-item text-uppercase">{{ 'home.navbar.accueil' | translate }}</div>
+        <div class="navbar-item text-uppercase drop">
+            <div class="drop-hover">ARTICLES</div>
+            <div class="category">
+                <a href="#">CATEGORIE 1 </a>
+                <a href="#">CATEGORIE 2 </a>
+                <a href="#">CATEGORIE 3 </a>
+            </div>
+        </div>
+        <div class="navbar-item text-uppercase">{{ 'home.navbar.about' | translate }}</div>
+        <div class="navbar-item text-uppercase">CONTACT</div>
+    </div>
+    <div class="menu text-center white col-md-2 col-xs-4">
+        <div class="navbar-social">
+            <div class="social-item"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+            <div class="social-item"><i class="fa fa-github" aria-hidden="true"></i></div>
+            <div class="social-item"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+
+        </div>
+    </div>
+
+    <div class="menu white col-md-2 col-xs-4" (click)="showList()">
+        <div class="reading-list">
+            <i id="star" class="fa fa-star" aria-hidden="true"></i>
+            <p *ngIf="width>500">Mes Favoris</p>
+        </div>
+    </div>
+</div>
+<reading-list [showReadingList]="showReadingList"></reading-list>
