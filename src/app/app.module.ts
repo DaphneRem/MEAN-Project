@@ -16,9 +16,17 @@ import { ArticleComponent } from './article/article.component';
 import { ReadingListReducer } from './store/reading-list.reducer';
 import { EditArticleComponent } from './articles/edit-article/edit-article.component';
 
-import {TranslateModule, TranslateLoader,  MissingTranslationHandler } from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { TranslateModule, TranslateLoader,  MissingTranslationHandler } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MyMissingTranslationHandler } from './missingtemplate.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { HeaderComponent } from './header/header.component';
+import { LastArticlesComponent } from './last-articles/last-articles.component';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+import { SearchArticlesComponent } from './search-articles/search-articles.component';
+import { ThumbnailComponent } from './thumbnail/thumbnail.component';
+import { LargeWidgetComponent } from './large-widget/large-widget.component';
 
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -32,6 +40,14 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     ArticlesComponent,
     ArticleComponent,
     EditArticleComponent,
+    NavbarComponent,
+    HeaderComponent,
+    LastArticlesComponent,
+    HomeComponent,
+    AboutComponent,
+    SearchArticlesComponent,
+    ThumbnailComponent,
+    LargeWidgetComponent
   ],
   imports: [
     AppRoutingModule,
