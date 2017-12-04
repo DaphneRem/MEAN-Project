@@ -3,7 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { ADD_TO_LIST, FIND} from '../store/reading-list.reducer';
+import { ADD_TO_LIST, DELETE_FROM_LIST} from '../store/reading-list.reducer';
 
 interface AppState {
   readingList: any[];
@@ -37,8 +37,8 @@ export class ThumbnailComponent implements OnInit {
       this.store.dispatch({ type: ADD_TO_LIST, payload: article });
   }
 
-  star(article) {
-      this.store.dispatch({ type: FIND, payload: article });
+  deleteFromFavorites(article){
+      this.store.dispatch({ type: DELETE_FROM_LIST, payload: article });
   }
 
 }

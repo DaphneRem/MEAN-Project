@@ -4,10 +4,10 @@
         [style.backgroundImage]="'url('+article.urlImage+')'"
         [style.backgroundSize]="'cover'">
         <!-- <div *ngFor="let fav of readingList| async"> -->
-            <div *ngIf="(readingList| async).indexOf(article) <= 0 " (click)="addToFavorites(article)">
+            <div *ngIf="(readingList| async).indexOf(article) < 0 " (click)="addToFavorites(article)">
                 <i class="fa fa-star-o" aria-hidden="true"></i>
             </div>
-            <div *ngIf="(readingList| async).indexOf(article) > 0">
+            <div *ngIf="(readingList| async).indexOf(article) >= 0" (click)="deleteFromFavorites(article)">
                 <i class="fa fa-star" aria-hidden="true"></i>
             </div>
         <!-- </div> -->
