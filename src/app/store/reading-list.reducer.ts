@@ -3,27 +3,37 @@ export const DELETE_FROM_LIST = 'DELETE_FROM_LIST';
 export const UPDATE_TO_LIST = 'UPDATE_TO_LIST';
 export const RESET = 'RESET';
 export const LENGTH = 'LENGTH';
+export const FIND = 'FIND';
 
 
-export const ReadingListReducer = (state: any = [], {type, payload}) => {
+
+export function ReadingListReducer(state: any = [], {type, payload}) {
   // console.log('ACTION:', type, payload, state);
   switch(type){
 
     case ADD_TO_LIST:
         let noDouble = state.filter(item => item._id !== payload._id);
-        return noDouble.concat([Object.assign({}, payload)]);
+        return [ ...noDouble, payload];
 
     case UPDATE_TO_LIST:
         let double = state.filter(item => item._id === payload._id);
         let updatedList = state.filter(item => item._id !== payload._id);
         if (double.length === 1) {
-            return updatedList.concat([Object.assign({}, payload)]);
+            return [ ...updatedList, payload];
         } else {
             return state
         }
 
     case LENGTH :
         return state.length
+
+    case FIND :
+        let exist = state.filter(item => item._id === payload._id);
+        if (exist.length === 1) {
+            return true;
+        } else {
+            return false
+        }
 
     case RESET:
         return state = [];
